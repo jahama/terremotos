@@ -1,0 +1,23 @@
+.info_terremoto h2{
+	font-weight: bold;
+	font-size: 1.3em;
+	padding:.2em 0;
+}
+
+.info_terremoto p small {
+	display: inline;
+	font-size: 1.1em;
+}
+
+#mapaTerremotos img {
+
+	width:300px;
+}
+
+#buscador .tag {
+	margin:10px;
+}
+
+#listado .tag {
+	margin-right:10px;
+}

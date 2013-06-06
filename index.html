@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Terremotos</title>
+    <meta name="description" content="">
+    <meta name="author" content="Javier Jiménez Villar (@soyjavi)">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- iPhone -->
+    <link href="http://cdn.tapquo.com/lungo/icon-57.png" sizes="57x57" rel="apple-touch-icon">
+    <link href="http://cdn.tapquo.com/lungo/startup-image-320x460.png" media="(device-width: 320px) and (device-height: 480px)
+             and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+
+    <!-- iPhone (Retina) -->
+    <link href="http://cdn.tapquo.com/lungo/icon-114.png" sizes="114x114" rel="apple-touch-icon">
+    <link href="http://cdn.tapquo.com/lungo/startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px)
+             and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- iPhone 5 -->
+    <link href="http://cdn.tapquo.com/lungo/startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px)
+             and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- iPad -->
+    <link href="http://cdn.tapquo.com/lungo/icon-72.png" sizes="72x72" rel="apple-touch-icon">
+    <link href="http://cdn.tapquo.com/lungo/startup-image-768x1004.png" media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: portrait)
+             and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+    <link href="http://cdn.tapquo.com/lungo/startup-image-748x1024.png" media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: landscape)
+             and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+
+    <!-- iPad (Retina) -->
+    <link href="http://cdn.tapquo.com/lungo/icon-144.png" sizes="144x144" rel="apple-touch-icon">
+    <link href="http://cdn.tapquo.com/lungo/startup-image-1536x2008.png" media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: portrait)
+             and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    <link href="http://cdn.tapquo.com/lungo/startup-image-1496x2048.png" media="(device-width: 768px) and (device-height: 1024px)
+             and (orientation: landscape)
+             and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="components/lungo/lungo.css">
+    <link rel="stylesheet" href="components/lungo/lungo.icon.css">
+    <link rel="stylesheet" href="components/lungo/lungo.icon.brand.css">
+    <link rel="stylesheet" href="components/lungo/lungo.css">
+    <link rel="stylesheet" href="components/lungo/theme.lungo.css">
+
+    <link rel="stylesheet" href="app/css/terremotos.css">
+</head>
+
+<body class="app">
+    <section id="main" data-transition="slide">
+       <header data-title="Terremotos">
+           <nav class="left">
+                <a href="#features" data-router="aside" data-icon="menu"></a>
+            </nav>
+       </header>
+        <footer>
+            <nav>
+                <a href="#listado" data-icon="clock" class="active" data-router="article"></a>
+                <a href="#mapa" data-icon="map" data-router="article"></a>
+                <a href="#buscador" data-icon="search" data-router="article"></a>
+                
+            </nav>
+        </footer>
+
+        <article id="listado" class="active list indented scroll">
+            <ul>
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>   
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>    
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>    
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>    
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>     
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>    
+            </ul>
+        </article>
+
+        <article id="mapa" class="">
+            <div id="mapaTerremotos"></div>
+        </article>
+
+         <article id="buscador" class="list indented scroll">
+           <div class="form">
+                <fieldset data-icon="search">
+                    <input type="text" placeholder="Buscar  ">
+                </fieldset>
+            </div>
+            
+            <ul>
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>   
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>    
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>    
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>    
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>     
+                <li class="arrow"> 
+                   <a href="#detalle_terremoto" data-router="section" >
+                        <div class="left tag blue">5.0</div>
+                        <strong> TERREMOTO,P.N.G.</strong>
+                        <small>11 Junio </small>
+                    </a>
+                </li>    
+            </ul>
+        </article>
+        </article>
+       
+    </section>
+
+    <aside id="features">
+        <header data-title="Opciones"></header>
+        <article class="active list">
+            <ul>
+                <li class="current">
+                    <a href="#configuracion" data-router="section">
+                        <strong>Configuracion</strong>
+                    </a>
+                </li>
+                
+            </ul>
+        </article>
+    </aside>
+    
+
+          
+  </section>    
+
+
+
+    <!-- Lungo - Dependencies -->
+     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="components/quojs/quo.js"></script>
+    <script src="components/lungo/lungo.js"></script>
+
+    
+    <script src="components/lungo/gmap/lungo.sugar.gmap.js"></script>
+    <script src="components/lungo/gmap/lungo.sugar.gmap.interface.js"></script>
+    <!-- Lungo - Sandbox App -->
+  
+    <script src="app/js/servicio.js"></script>
+   <script src="app/js/data.js"></script> 
+    <script src="app/js/main.js"></script>
+    
+    <script>
+        Lungo.init({
+            name: 'terremotos',
+            resources: ['app/views/details.html','app/views/settings.html']
+        });
+    </script>
+</body>
+</html>
