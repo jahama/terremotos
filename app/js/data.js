@@ -1,40 +1,40 @@
-var CONFIG = {
+var config = {
     name: 'terremotos_db',         //Name of the database
     version: '1.0',           //Version of the database
     size: 65536,              //Size of the database
     schema: [                 //Database schema
         {
             name: 'terremotos',     //Table name
-            drop: true,       //Drop existing content on init
+            drop: false,       //Drop existing content on init
             fields: {         //Table fields
               id: 'INTEGER PRIMARY KEY',
               title: 'TEXT',
-              link: 'STRING',
+              link: 'TEXT',
               latitud: 'REAL',
               longitud : 'REAL',
               guid : 'TEXT',
               depth : 'INTEGER',
               description: 'TEXT',
-              pubDate: 'DATETME'
+              pubDate: 'DATETIME'
 
             }
         }
         
     ]
 };
-Lungo.Data.Sql.init(CONFIG);
+Lungo.Data.Sql.init(config);
 
 // Insertar registros
 var accounts = [
     {
-              id: 2222 ,
+              id: 66666 ,
               title: 'titulo',
               link: 'http://www.emsc-csem.org/Earthquake/earthquake.php?id=320316',
               latitud: 22.22,
               longitud : 33.33,
               guid : 'http://www.emsc-csem.org/Earthquake/earthquake.php?id=320316',
-              depth : '11',
-              description: '<table><tr><td><table cellpadding="0" cellspacing="0" border="0" style="margin-top:5px; font-size:11px;"><tr><td style="padding-right:4px">Magnitude</td><td class="point2">  ML 2.0</td></tr><tr><td style="padding-right:4px">Region</td><td class="point2">  SICILY, ITALY</td></tr><tr><td style="padding-right:4px">Date time</td><td class="point2">  2013-06-04   20:03:15.0 UTC</td></tr><tr><td style="padding-right:4px">Location</td><td class="point2">  38.44 N ; 15.34 E</td></tr><tr><td style="padding-right:4px">Depth</td><td class="point2">  114 km</td></tr></table></td></tr></table>',
+              depth : 111,
+              description: '<table><tr><td><table cellpadding=\""0\"" cellspacing=\""0\"" border=\""0\"" style=\""margin-top:5px; font-size:11px;\""><tr><td style=\""padding-right:4px\"">Magnitude</td>',
               pubDate: 'Tue, 04 Jun 2013 20:12:00 +0000'
     }
 ];

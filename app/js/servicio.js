@@ -11,38 +11,82 @@ var cargarDatos = function() {
 		var terremotos = result.getElementsByTagName('item');
 	    Lungo.Core.log(1,terremotos[0]);
 
-	
+		
 		for (var i = 0; i < terremotos.length; i++)
 		 {
 
 		  // id
-		  var idTerremoto = terremotos[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue; console.log(idTerremoto);
+		  var idTerremoto = terremotos[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue; 
+		  	  idTerremoto = Date.parse(idTerremoto)/10000; 
+		      console.log(idTerremoto);
+
 		  	
 		  // Obtenemos el título
-		  var titulo = terremotos[i].getElementsByTagName("title")[0].childNodes[0].nodeValue; console.log(titulo);
+		  var titulo = terremotos[i].getElementsByTagName("title")[0].childNodes[0].nodeValue; 
+		  //console.log(titulo);
 		  // enlace
-		  var enlace = terremotos[i].getElementsByTagName("link")[0].childNodes[0].nodeValue; console.log(enlace);
-
+		  var enlace = terremotos[i].getElementsByTagName("link")[0].childNodes[0].nodeValue; 
+		  //console.log(enlace);
+		  //
+		   var latitud = terremotos[i].getElementsByTagName("lat")[0].childNodes[0].nodeValue; 
+		   //console.log(latitud);
+		  //
+		  var longitud = terremotos[i].getElementsByTagName("long")[0].childNodes[0].nodeValue; 
+		  //onsole.log(longitud);
+		   //
+		  var masInfo = terremotos[i].getElementsByTagName("guid")[0].childNodes[0].nodeValue; 
+		  //console.log(masInfo);
+		   //
+		  var profundidad = terremotos[i].getElementsByTagName("depth")[0].childNodes[0].nodeValue; 
+		  //console.log(profundidad);
+		    //
+		  var descripcion = terremotos[i].getElementsByTagName("description")[0].childNodes[0].nodeValue; 
+		  //console.log(descripcion);
+		    //  descripcion_es = 
+		  //
+		  var fecha = terremotos[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue; 
+		  	  fecha_ts = Date.parse(fecha);
+		//console.log(fecha_ts);
 		  // Insertar registros
 		 var terremoto = [
-    {
-              id: 2222 ,
+    		{
+              id: idTerremoto ,
               title: titulo,
               link: enlace,
-              latitud: 22.22,
-              longitud : 33.33,
-              guid : 'http://www.emsc-csem.org/Earthquake/earthquake.php?id=320316',
-              depth : '11',
-              description: '<table><tr><td><table cellpadding="0" cellspacing="0" border="0" style="margin-top:5px; font-size:11px;"><tr><td style="padding-right:4px">Magnitude</td><td class="point2">  ML 2.0</td></tr><tr><td style="padding-right:4px">Region</td><td class="point2">  SICILY, ITALY</td></tr><tr><td style="padding-right:4px">Date time</td><td class="point2">  2013-06-04   20:03:15.0 UTC</td></tr><tr><td style="padding-right:4px">Location</td><td class="point2">  38.44 N ; 15.34 E</td></tr><tr><td style="padding-right:4px">Depth</td><td class="point2">  114 km</td></tr></table></td></tr></table>',
-              pubDate: 'Tue, 04 Jun 2013 20:12:00 +0000'
-    }
-];
+              latitud: latitud,
+              longitud : longitud,
+              guid : masInfo,
+              depth : profundidad,
+            //  description: descripcion,
+              pubDate: fecha_ts
+			    }
+			];
 
- // Lungo.Data.Sql.insert('terremotos', terremoto);
+  			//Lungo.Data.Sql.insert('terremotos', terremoto);
 
 
 
-		};
+			};
+
+			// consulta para obtener todos los terremotos 
+			
+			var infoTerremotos = function(data){
+
+		    	for(var i = 0, len = data.length; i < len; i++){
+				      console.log(data[i].title + ' - '+ data[i].latitud + ' - '+ data[i].longitud + ' - ');
+				     var elemento = $$('#listado ul').append('<li> </li> ');
+				         elemento.find('li').addClass('arrow');
+				         
+				         
+				     console.log(elemento);
+				     	 
+				        
+				    }
+			}
+				   
+
+			Lungo.Data.Sql.select('terremotos', null, infoTerremotos);
+				
 
 	   
 	};
