@@ -12,6 +12,7 @@ var config = {
               link: 'TEXT',
               latitud: 'REAL',
               longitud : 'REAL',
+            //  magnitude: 'REAL',
               guid : 'TEXT',
               depth : 'INTEGER',
               description: 'TEXT',
@@ -41,18 +42,8 @@ var accounts = [
 
 //Lungo.Data.Sql.insert('terremotos', accounts);
 
-// Select
-var showInfo = function(data){
-
-    for(var i = 0, len = data.length; i < len; i++){
-        var text = "The account " + data[i].account;
-        text += " name is " + data[i].name;
-        console.log(text);
-      }
-
-};
 
 
-//Lungo.Data.Sql.select('twitter', {account: 'lungojs'}, showInfo);
+
 
 
