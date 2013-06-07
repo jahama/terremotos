@@ -45,7 +45,7 @@ var cargarDatos = function() {
 		  var descripcion = terremotos[i].getElementsByTagName("description")[0].childNodes[0].nodeValue; 
 		 // console.log(descripcion);
 		  var descripcion_re = descripcion.replace(/"/g, '\\""');
-			 console.log(descripcion_re);      //mother-in_law
+			// console.log(descripcion_re);      //mother-in_law
 		    //  descripcion_es = 
 		  //
 		  var fecha = terremotos[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue; 
