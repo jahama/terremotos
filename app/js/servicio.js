@@ -6,10 +6,14 @@ var cargarDatos = function() {
 	var data = {};
 	var listadoTerremotos=[];
 
+		/* =====================================================================
+			FUNCION DE CALLBACK DE LA PETICION AJAX PARA OBTENER TERRMOTOS 
+	     ====================================================================== */
 	var parseResponse = function(result){
 
 		var terremotos = result.getElementsByTagName('item');
-	    Lungo.Core.log(1,terremotos[0]);
+		console.log(" datos que se reciben del servicio web ");
+	    Lungo.Core.log(1,terremotos);
 
 		
 		for (var i = 0; i < terremotos.length; i++)
@@ -17,7 +21,7 @@ var cargarDatos = function() {
 
 		  // id
 		  var idTerremoto = terremotos[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue; 
-		  	  idTerremoto = Date.parse(idTerremoto); 
+		  	  idTerremoto = Date.parse(idTerremoto)/1000; 
 		    //  console.log(idTerremoto);
 
 		  	

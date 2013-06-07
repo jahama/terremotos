@@ -1,19 +1,24 @@
 Lungo.ready(function() {
 
 	cargarDatos();
+
+	
 	
 	/* ===============================
 		    VISTA DE DETALLE
 	================================= */
 
-
+    /*  
+		
+    */
 	Lungo.dom('.arrow a').tap(function() {
 	   var  id = this.getAttribute("data-id");
 	   var terremoto = Lungo.dom(this);
 
 
-	//   console.log(" id guardado en session storage " + terremoto.attr('data-id'));
+	  console.log(" id guardado en session storage " + terremoto.attr('data-id'));
 	  // sessionStorage.setItem('id', id);
+	   //Lungo.Data.Storage.session("id", null);
 	   Lungo.Data.Storage.session("id", id);
 	   
 	});
@@ -21,6 +26,8 @@ Lungo.ready(function() {
 	Lungo.dom('#detalle_terremoto').on("load", function(event) {
 		//  Lungo.Core.log(1,event );
 		  Lungo.Core.log(1,Lungo.Data.Storage.session("id") );
+		  //
+		  
 
 		  var id =  Lungo.Data.Storage.session("id");
 		  console.log(" identificador para la busqueda en BBDD " +  id)
@@ -44,6 +51,11 @@ Lungo.ready(function() {
 	        $$('#detalle_nombre  [data-icon=clock] .clock').text(date.getHours()+ ':' + date.getMinutes());
 	      //  console.log( $$('#detalle_nombre .mas_info_terremoto '));
 	        $$('#detalle_nombre .mas_info_terremoto ').html(data[0].description);
+
+	        $$('#detalle_nombre .right.tag.blue ').html(data[0].magnitude);
+
+
+	       
 
 	        /* ============================
 	   				CARGAR EL MAPA
@@ -117,8 +129,6 @@ Lungo.ready(function() {
 						navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 				}
 
-
-				
 				function geo_success(position) {
 
 				  console.log(data[0]);
@@ -181,6 +191,23 @@ Lungo.ready(function() {
 				})
 					
 
+	});
+
+/* ===================================================================
+		   NOTIFICACION EN LA PAGIAN DE DETALLE DEL TERREMOTO
+  ====================================================================== */
+
+	Lungo.dom('#detalle_terremoto .button').on("singleTap", function(event) {
+    	console.log(" compartir ");
+    	console.log(this);
+
+    	var notificcion = "";
+    	// 
+    	notificcion += '<a href="#" class="button anchor" data-icon="twitter" data-label="Normal" data-action="normal"><span class="icon brand twitter"></span><abbr>Twitter</abbr></a>';
+    	notificcion += '<a href="#" class="button anchor" data-label="Normal" data-action="normal"><span class="icon brand facebook"></span><abbr>Facebook</abbr></a>';
+    	notificcion += '<a href="#" class="button anchor" data-label="Normal" data-action="normal"><span class="icon brand google-plus"></span><abbr>Google Plus</abbr></a>';
+
+    	Lungo.Notification.html(notificcion, "Close");
 	});
 
 
