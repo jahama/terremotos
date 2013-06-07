@@ -6,7 +6,8 @@
 
 .info_terremoto p small {
 	display: inline;
-	font-size: 1.1em;
+	font-size: .9em;
+	margin:0 .5em 0 0;
 }
 
 #mapaTerremotos img {

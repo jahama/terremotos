@@ -36,9 +36,13 @@ Lungo.ready(function() {
 	  //  for(var i = 0, len = data.length; i < len; i++){
 	        Lungo.Core.log(1,data[0].title + ' - '+ data[0].id + ' - '+ data[0].pubDate + ' - ');
 
+	        var date = new Date(data[0].pubDate);
+
+	        console.log("fecha " + date.toTimeString());
+
 	        $$('#detalle_nombre .info_terremoto h2').text(data[0].title);
-	        $$('#detalle_nombre [data-icon=calendar]').text(data[0].pubDate);
-	        $$('#detalle_nombre [data-icon=clock]').text(data[0].pubDate);
+	        $$('#detalle_nombre  [data-icon=calendar] .calendar').text(date.getMonth()+ '/' +date.getFullYear()); 
+	        $$('#detalle_nombre  [data-icon=clock] .clock').text(date.getHours()+ ':' + date.getMinutes());
 	        console.log( $$('#detalle_nombre .mas_info_terremoto '));
 	        $$('#detalle_nombre .mas_info_terremoto ').html(data[0].description);
 
