@@ -35,6 +35,7 @@ var cargarDatos = function() {
 		  //Console.log(longitud);
 		  var magnitud = terremotos[i].getElementsByTagName("magnitude")[0].childNodes[0].nodeValue; 
 		  //console.log(magnitud);
+		   var magnitud_re = magnitud.replace(/[A-Z]/gi, ' ');
 		   //
 		  var masInfo = terremotos[i].getElementsByTagName("guid")[0].childNodes[0].nodeValue; 
 		  //console.log(masInfo);
@@ -46,7 +47,7 @@ var cargarDatos = function() {
 		 // console.log(descripcion);
 		  var descripcion_re = descripcion.replace(/"/g, '\\""');
 			// console.log(descripcion_re);      //mother-in_law
-		    //  descripcion_es = 
+		    
 		  //
 		  var fecha = terremotos[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue; 
 		  	  fecha_ts = Date.parse(fecha);
@@ -59,7 +60,7 @@ var cargarDatos = function() {
               link: enlace,
               latitud: latitud,
               longitud : longitud,
-              magnitude: magnitud,
+              magnitude: magnitud_re,
               guid : masInfo,
               depth : profundidad,
               description: descripcion_re,

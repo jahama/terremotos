@@ -1,6 +1,5 @@
 Lungo.ready(function() {
 
-	Lungo.Core.log(1, "Launched event");
 	cargarDatos();
 	
 	/* ===============================
@@ -13,14 +12,14 @@ Lungo.ready(function() {
 	   var terremoto = Lungo.dom(this);
 
 
-	   console.log(" id guardado en session storage " + terremoto.attr('data-id'));
+	//   console.log(" id guardado en session storage " + terremoto.attr('data-id'));
 	  // sessionStorage.setItem('id', id);
-	   Lungo.Data.Storage.session("id", id)
+	   Lungo.Data.Storage.session("id", id);
 	   
 	});
 
 	Lungo.dom('#detalle_terremoto').on("load", function(event) {
-		  Lungo.Core.log(1,event );
+		//  Lungo.Core.log(1,event );
 		  Lungo.Core.log(1,Lungo.Data.Storage.session("id") );
 
 		  var id =  Lungo.Data.Storage.session("id");
@@ -31,35 +30,31 @@ Lungo.ready(function() {
 
 		// Select
 	var infoTerremoto = function(data){
-		console.log(data);
+		//console.log(data);
 
 	  //  for(var i = 0, len = data.length; i < len; i++){
-	        Lungo.Core.log(1,data[0].title + ' - '+ data[0].id + ' - '+ data[0].pubDate + ' - ');
+	       // Lungo.Core.log(1,data[0].title + ' - '+ data[0].id + ' - '+ data[0].pubDate + ' - ');
 
 	        var date = new Date(data[0].pubDate);
 
-	        console.log("fecha " + date.toTimeString());
+	     //   console.log("fecha " + date.toTimeString());
 
 	        $$('#detalle_nombre .info_terremoto h2').text(data[0].title);
 	        $$('#detalle_nombre  [data-icon=calendar] .calendar').text(date.getMonth()+ '/' +date.getFullYear()); 
 	        $$('#detalle_nombre  [data-icon=clock] .clock').text(date.getHours()+ ':' + date.getMinutes());
-	        console.log( $$('#detalle_nombre .mas_info_terremoto '));
+	      //  console.log( $$('#detalle_nombre .mas_info_terremoto '));
 	        $$('#detalle_nombre .mas_info_terremoto ').html(data[0].description);
 
-	        
-
-
-	       // cargar el mapa
-	       console.log(" cargando el mapa ");
-
+	        /* ============================
+	   				CARGAR EL MAPA
+			  ============================ */
 	       if (navigator.geolocation) {
 	       		console.log(" carga el mapa ");
 				navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 			}
 
 			function geo_success(position) {
-				console.log("  success  ");
-
+			
 			// Obtengo la posicion	
 			 var _miPos = {
 			  	latitude:data[0].latitud,
@@ -78,7 +73,6 @@ Lungo.ready(function() {
 			// añado un mensaje para mostrar con el marcador 
 			marcador.title= data[0].title;
 
-			console.log(marcador);
             Lungo.Sugar.GMap.center(_miPos);
            
 
