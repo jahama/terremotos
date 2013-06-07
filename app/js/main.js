@@ -121,7 +121,7 @@ Lungo.ready(function() {
 				
 				function geo_success(position) {
 
-				  console.log(data);
+				  console.log(data[0]);
 				  var listaPosiciones=[];
 
 				   Lungo.Sugar.GMap.init({
@@ -134,21 +134,25 @@ Lungo.ready(function() {
 					for (var i=0;i<40;i++){
 					// Obtengo la posicion	
 						 var _miPos = {
-						  	latitude:data[i].longitud,
-						  	longitude:data[i].latitud,
+						 	latitude:data[i].latitud,
+						 	longitude:data[i].longitud,
+						  	
 						  };
 						 console.log(" posicion : "); 
 						 console.log(_miPos);
 						 listaPosiciones.push(_miPos);
 
-						 var marcador = Lungo.Sugar.GMap.addMarker(_miPos, null, false);
-						 marcador.title=data[i].title +' / ' + data[i].latitud + ' :: ' + data[i].longitud  ;
+						 var marcador = Lungo.Sugar.GMap;
+						 marcador.addMarker(_miPos, null, false);
+						 marcador.title=data[i].title +' /' + data[i].latitud + ' :: ' + data[i].longitud  ;
+						 marcador.center(_miPos);
+					     marcador.zoom(3);
 
 					}
 						
 
-							console.log(listaPosiciones);
-							
+							console.log(listaPosiciones[0]);
+							/*
 								Lungo.Sugar.GMap.addMarker(listaPosiciones[1], null, false);
 								 Lungo.Sugar.GMap.addMarker(listaPosiciones[2], null, false);
 								Lungo.Sugar.GMap.addMarker(listaPosiciones[2], null, false);
@@ -161,7 +165,7 @@ Lungo.ready(function() {
 					            Lungo.Sugar.GMap.center(_miPos);
 					            Lungo.Sugar.GMap.zoom(3);
 					  
-
+*/
 
 					}
 					 
