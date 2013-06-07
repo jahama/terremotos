@@ -33,8 +33,8 @@ var cargarDatos = function() {
 		  //
 		  var longitud = terremotos[i].getElementsByTagName("long")[0].childNodes[0].nodeValue; 
 		  //Console.log(longitud);
-		//  var magnitud = terremotos[i].getElementsByTagName("magnitude")[0].childNodes[0].nodeValue; 
-		  //Console.log(longitud);
+		  var magnitud = terremotos[i].getElementsByTagName("magnitude")[0].childNodes[0].nodeValue; 
+		  //console.log(magnitud);
 		   //
 		  var masInfo = terremotos[i].getElementsByTagName("guid")[0].childNodes[0].nodeValue; 
 		  //console.log(masInfo);
@@ -43,7 +43,9 @@ var cargarDatos = function() {
 		  //console.log(profundidad);
 		    //
 		  var descripcion = terremotos[i].getElementsByTagName("description")[0].childNodes[0].nodeValue; 
-		  //console.log(descripcion);
+		 // console.log(descripcion);
+		  var descripcion_re = descripcion.replace(/"/g, '\\""');
+			 console.log(descripcion_re);      //mother-in_law
 		    //  descripcion_es = 
 		  //
 		  var fecha = terremotos[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue; 
@@ -57,10 +59,10 @@ var cargarDatos = function() {
               link: enlace,
               latitud: latitud,
               longitud : longitud,
-           //   magnitude: magnitude,
+              magnitude: magnitud,
               guid : masInfo,
               depth : profundidad,
-            //  description: descripcion,
+              description: descripcion_re,
               pubDate: fecha_ts
 			    }
 			];
@@ -83,8 +85,8 @@ var cargarDatos = function() {
 				     */   
 				         
 				    // console.log(elemento);
-				     $$('#listado ul').append('<li class="arrow"><a href="#detalle_terremoto" data-router="section"  data-id="'+ data[i].id +'" ><div class="left tag blue">'+ data[i].depth +'</div><strong>'+ data[i].title +'</strong></a> <small>'+ new Date(data[i].pubDate  * 1000)+'</small></li> ');
-				     $$('#buscador ul').append('<li class="arrow"><a href="#detalle_terremoto" data-router="section" data-id="'+ data[i].id +'" ><div class="left tag blue">'+ data[i].depth +'</div><strong>'+ data[i].title +'</strong></a> <small>'+ new Date(data[i].pubDate  * 1000)+'</small></li> ');
+				     $$('#listado ul').append('<li class="arrow"><a href="#detalle_terremoto" data-router="section"  data-id="'+ data[i].id +'" ><div class="left tag blue">'+ data[i].magnitude +'</div><strong>'+ data[i].title +'</strong></a> <small>'+ new Date(data[i].pubDate  * 1000)+'</small></li> ');
+				     $$('#buscador ul').append('<li class="arrow"><a href="#detalle_terremoto" data-router="section" data-id="'+ data[i].id +'" ><div class="left tag blue">'+ data[i].magnitude +'</div><strong>'+ data[i].title +'</strong></a> <small>'+ new Date(data[i].pubDate  * 1000)+'</small></li> ');
 				        
 				    }
 			}

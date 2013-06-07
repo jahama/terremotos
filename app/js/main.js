@@ -34,11 +34,14 @@ Lungo.ready(function() {
 		console.log(data);
 
 	  //  for(var i = 0, len = data.length; i < len; i++){
-	        Lungo.Core.log(1,data[0].title + ' - '+ data[0].latitud + ' - '+ data[0].pubDate + ' - ');
+	        Lungo.Core.log(1,data[0].title + ' - '+ data[0].id + ' - '+ data[0].pubDate + ' - ');
 
 	        $$('#detalle_nombre .info_terremoto h2').text(data[0].title);
-	        $$('[data-icon=calendar]').text(data[0].pubDate);
-	        $$('[data-icon=clock]').text(data[0].pubDate);
+	        $$('#detalle_nombre [data-icon=calendar]').text(data[0].pubDate);
+	        $$('#detalle_nombre [data-icon=clock]').text(data[0].pubDate);
+	        console.log( $$('#detalle_nombre .mas_info_terremoto '));
+	        $$('#detalle_nombre .mas_info_terremoto ').html(data[0].description);
+
 	        
 
 
@@ -63,7 +66,6 @@ Lungo.ready(function() {
 			 Lungo.Sugar.GMap.init({
 		            el: '#mapaTerremoto',
 		            zoom: 3,
-		         //   type: 'HYBRID',
 		            center: _miPos
 		        });
 
@@ -127,11 +129,10 @@ Lungo.ready(function() {
 				   Lungo.Sugar.GMap.init({
 					            el: '#mapa',
 					            zoom: 3,
-					          //  type: 'HYBRID',
-					            //center: _miPos
+					            center: _miPos
 					        });
 
-					for (var i=0;i<40;i++){
+					for (var i=0;i<20;i++){
 					// Obtengo la posicion	
 						 var _miPos = {
 						 	latitude:data[i].latitud,
@@ -146,7 +147,7 @@ Lungo.ready(function() {
 						 marcador.addMarker(_miPos, null, false);
 						 marcador.title=data[i].title +' /' + data[i].latitud + ' :: ' + data[i].longitud  ;
 						 marcador.center(_miPos);
-					     marcador.zoom(3);
+					     
 
 					}
 						
