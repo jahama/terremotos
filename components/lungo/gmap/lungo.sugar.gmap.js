@@ -74,7 +74,7 @@ Lungo.Sugar.GMap = (function(lng, undefined) {
                 icon: this.Interface.MarkerIcon(icon),
                 animation: google.maps.Animation.DROP,
                 position: this.Interface.LatLng(position),
-                title: "hola que tal"
+                title: ""
 
             });
 

@@ -17,7 +17,7 @@ var cargarDatos = function() {
 
 		  // id
 		  var idTerremoto = terremotos[i].getElementsByTagName("pubDate")[0].childNodes[0].nodeValue; 
-		  	  idTerremoto = Date.parse(idTerremoto)/10000; 
+		  	  idTerremoto = Date.parse(idTerremoto); 
 		    //  console.log(idTerremoto);
 
 		  	

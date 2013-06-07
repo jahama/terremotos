@@ -8,30 +8,37 @@ Lungo.ready(function() {
 	================================= */
 
 
-	$$('.arrow a').tap(function() {
+	Lungo.dom('.arrow a').tap(function() {
 	   var  id = this.getAttribute("data-id");
-	   sessionStorage.setItem('identificador', id);
+	   var terremoto = Lungo.dom(this);
+
+
+	   console.log(" id guardado en session storage " + terremoto.attr('data-id'));
+	  // sessionStorage.setItem('id', id);
+	   Lungo.Data.Storage.session("id", id)
 	   
 	});
 
 	Lungo.dom('#detalle_terremoto').on("load", function(event) {
 		  Lungo.Core.log(1,event );
-		  Lungo.Core.log(1,sessionStorage.getItem('identificador') );
+		  Lungo.Core.log(1,Lungo.Data.Storage.session("id") );
 
-		  var identificador = sessionStorage.getItem('identificador');
-		  Lungo.Data.Sql.select('terremotos', {id: identificador}, infoTerremoto);
+		  var id =  Lungo.Data.Storage.session("id");
+		  console.log(" identificador para la busqueda en BBDD " +  id)
+		  Lungo.Data.Sql.select('terremotos', {id: id}, infoTerremoto);
 
 	});
 
 		// Select
 	var infoTerremoto = function(data){
+		console.log(data);
 
-	    for(var i = 0, len = data.length; i < len; i++){
-	        Lungo.Core.log(1,data[i].title + ' - '+ data[i].latitud + ' - '+ data[i].pubDate + ' - ');
+	  //  for(var i = 0, len = data.length; i < len; i++){
+	        Lungo.Core.log(1,data[0].title + ' - '+ data[0].latitud + ' - '+ data[0].pubDate + ' - ');
 
-	        $$('#detalle_nombre .info_terremoto h2').text(data[i].title);
-	      //  $$('#detalle_nombre .info_terremoto .calendar').text(data[i].pubDate);
-	      //  $$('#detalle_nombre .info_terremoto .clock').text(hora_);
+	        $$('#detalle_nombre .info_terremoto h2').text(data[0].title);
+	        $$('[data-icon=calendar]').text(data[0].pubDate);
+	        $$('[data-icon=clock]').text(data[0].pubDate);
 	        
 
 
@@ -39,34 +46,35 @@ Lungo.ready(function() {
 	       console.log(" cargando el mapa ");
 
 	       if (navigator.geolocation) {
+	       		console.log(" carga el mapa ");
 				navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
 			}
 
 			function geo_success(position) {
-
+				console.log("  success  ");
 
 			// Obtengo la posicion	
 			 var _miPos = {
-			  	latitude:position.coords.latitude,
-			  	longitude:position.coords.longitude
+			  	latitude:data[0].latitud,
+			  	longitude:data[0].longitud
 			  };
-			  console.log(" mi posicion " +position);
+			  console.log(position);
 			  
 			 Lungo.Sugar.GMap.init({
-		            el: '#mapaTerremotos',
-		            zoom: 14,
-		            type: 'HYBRID',
+		            el: '#mapaTerremoto',
+		            zoom: 3,
+		         //   type: 'HYBRID',
 		            center: _miPos
 		        });
 
 			// marcador 
 			var marcador = Lungo.Sugar.GMap.addMarker(_miPos, null, false);
 			// añado un mensaje para mostrar con el marcador 
-			marcador.title= " Hola que tal !!!!!"
+			marcador.title= data[0].title;
 
 			console.log(marcador);
             Lungo.Sugar.GMap.center(_miPos);
-            Lungo.Sugar.GMap.zoom(14);
+           
 
 
 
@@ -83,7 +91,7 @@ Lungo.ready(function() {
 			 
 			};
 
-	      }
+	      
 
 	};
 
@@ -101,68 +109,74 @@ Lungo.ready(function() {
 	
 			// JavaScript Code
 	Lungo.dom('#mapa').on('load', function(event) {
-	    if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
-		}
-		
-			function geo_success(position) {
 
-			// Obtengo la posicion	
-			 var _miPos = {
-			  	latitude:position.coords.latitude,
-			  	longitude:position.coords.longitude
-			  };
 
-			   var _miPos2 = {
-			  	latitude:position.coords.latitude+2,
-			  	longitude:position.coords.longitude
-			  };
+		Lungo.Data.Sql.select('terremotos', null, function(data){
+			//console ( " empezar a pintar los terremotos ");
+			    if (navigator.geolocation) {
+						navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
+				}
 
-			   var _miPos3 = {
-			  	latitude:position.coords.latitude,
-			  	longitude:position.coords.longitude+2
-			  };
-			  
-			 Lungo.Sugar.GMap.init({
-		            el: '#mapa',
-		            zoom: 4,
-		            type: 'HYBRID',
-		            center: _miPos
-		        });
 
-				// marcador 
 				
-					var marcador = Lungo.Sugar.GMap.addMarker(_miPos, null, false);
-					// añado un mensaje para mostrar con el marcador 
-					marcador.title= " Hola que tal !!!!!"
+				function geo_success(position) {
 
-					var marcador2 = Lungo.Sugar.GMap.addMarker(_miPos2, null, false);
-					// añado un mensaje para mostrar con el marcador 
-					marcador2.title= " Hola que tal 2!!!!!"
+				  console.log(data);
+				  var listaPosiciones=[];
 
-					var marcador3 = Lungo.Sugar.GMap.addMarker(_miPos3, null, false);
-					// añado un mensaje para mostrar con el marcador 
-					marcador3.title= " Hola que tal 3!!!!!"
+				   Lungo.Sugar.GMap.init({
+					            el: '#mapa',
+					            zoom: 3,
+					          //  type: 'HYBRID',
+					            //center: _miPos
+					        });
 
-					//console.log(marcador);
-		           // Lungo.Sugar.GMap.center(_miPos);
-		            Lungo.Sugar.GMap.zoom(4);
-		       
+					for (var i=0;i<40;i++){
+					// Obtengo la posicion	
+						 var _miPos = {
+						  	latitude:data[i].longitud,
+						  	longitude:data[i].latitud,
+						  };
+						 console.log(" posicion : "); 
+						 console.log(_miPos);
+						 listaPosiciones.push(_miPos);
+
+						 var marcador = Lungo.Sugar.GMap.addMarker(_miPos, null, false);
+						 marcador.title=data[i].title +' / ' + data[i].latitud + ' :: ' + data[i].longitud  ;
+
+					}
+						
+
+							console.log(listaPosiciones);
+							
+								Lungo.Sugar.GMap.addMarker(listaPosiciones[1], null, false);
+								 Lungo.Sugar.GMap.addMarker(listaPosiciones[2], null, false);
+								Lungo.Sugar.GMap.addMarker(listaPosiciones[2], null, false);
+								// añado un mensaje para mostrar con el marcador 
+								//marcador.title= data[i].title + ' / ' + data[i].longitud + ' : ' + data[i].latitud ;
+
+								
+								
+								//console.log(marcador);
+					            Lungo.Sugar.GMap.center(_miPos);
+					            Lungo.Sugar.GMap.zoom(3);
+					  
 
 
-			}
-			 
-			function geo_error() {
-			  alert("Sorry, no position available.");
-			}
-			 
-			var geo_options = {
-			  enableHighAccuracy: true, 
-			  maximumAge        : 30000, 
-			  timeout           : 27000,
-			 
-			};
-			
+					}
+					 
+					function geo_error() {
+					  alert("Sorry, no position available.");
+					}
+					 
+					var geo_options = {
+					  enableHighAccuracy: true, 
+					  maximumAge        : 30000, 
+					  timeout           : 27000,
+					 
+					};
+				})
+					
 
 	});
 
