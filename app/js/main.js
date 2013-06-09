@@ -27,12 +27,13 @@ Lungo.ready(function() {
 		//  Lungo.Core.log(1,event );
 		  Lungo.Core.log(1,Lungo.Data.Storage.session("id") );
 		  //
-		  
+		  setTimeout(function(){
+			  var id =  Lungo.Data.Storage.session("id");
+			  console.log(" identificador para la busqueda en BBDD " +  id)
+			  Lungo.Data.Sql.select('terremotos', {id: id}, infoTerremoto);
+		},20);
 
-		  var id =  Lungo.Data.Storage.session("id");
-		  console.log(" identificador para la busqueda en BBDD " +  id)
-		  Lungo.Data.Sql.select('terremotos', {id: id}, infoTerremoto);
-
+		
 	});
 
 		// Select

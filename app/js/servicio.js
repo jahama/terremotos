@@ -72,7 +72,7 @@ var cargarDatos = function() {
 			    }
 			];
 
-  			//Lungo.Data.Sql.insert('terremotos', terremoto);
+  			Lungo.Data.Sql.insert('terremotos', terremoto);
 
 
 

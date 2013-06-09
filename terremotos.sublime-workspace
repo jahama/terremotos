@@ -4,12 +4,16 @@
 		"selected_items":
 		[
 			[
-				"dame",
-				"dameApellido"
+				"te",
+				"terremotos"
 			],
 			[
 				"co",
-				"concatenar"
+				"coords"
+			],
+			[
+				"dame",
+				"dameApellido"
 			],
 			[
 				"latit",
@@ -71,26 +75,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 7657,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "\n<section id=\"form\" data-transition=\"slide\" class=\"show\">\n   <header data-title=\"Formulario\"></header>\n\n    <article id=\"form-normal\" class=\"active\">\n        <div class=\"form\">\n            <fieldset data-icon=\"plus\">\n                <label>To:</label>\n                <input type=\"text\">\n            </fieldset>\n            <fieldset>\n                <label>Cc/Cco:</label>\n                <input type=\"text\">\n            </fieldset>\n            <fieldset data-icon=\"pencil\">\n                <label>Subject:</label>\n                <input type=\"text\">\n            </fieldset>\n            <fieldset>\n                <label>Summary:</label>\n                <br>\n                <input type=\"text\">\n            </fieldset>\n            <fieldset>\n                <textarea></textarea>\n            </fieldset>\n        </div>\n    </article>\n    <footer>\n            <nav>\n                <a href=\"#\" data-icon=\"menu\" class=\"active\"></a>\n                <a href=\"#\" data-icon=\"share\"></a>\n                <a href=\"#\" data-icon=\"user\"></a>\n                <a href=\"#\" data-icon=\"users\"></a>\n            </nav>\n        </footer>\n</section>\n",
-			"file": "formulario.html",
-			"file_size": 1131,
-			"file_write_time": 1370343003000000,
-			"settings":
-			{
-				"buffer_size": 1131,
-				"line_ending": "Unix",
-				"name": "<section id=\"form\" data-transition=\"slide\" class=\""
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -148,10 +132,61 @@
 	},
 	"file_history":
 	[
+		"/var/www/HTML5/Lungo/ejemplos/servicioREST/datos/panoramio.json",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/app/js/data.js",
+		"/var/www/HTML5/Lungo/ejemplos/servicioREST/datos/ejemplo.json",
+		"/var/www/HTML5/Lungo/ejemplos/servicioREST/datos/datos.json",
+		"/var/www/HTML5/Lungo/ejemplos/servicioREST/datos/datos",
+		"/var/www/HTML5/Lungo/ejemplos/servicioREST/app/service.js",
+		"/var/www/HTML5/Lungo/ejemplos/servicioREST/app/app.js",
+		"/var/www/HTML5/Lungo/ejemplos/ej_lungoio2/index.html",
+		"/var/www/HTML5/Lungo/ejemplos/ej_lungoio2/data.js",
+		"/var/www/HTML5/Lungo/ejemplos/ej_lungoio2/events.js",
+		"/var/www/HTML5/Lungo/ejemplos/ej_lungoio2/app.js",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/index.html",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/app/js/main.js",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/app/js/servicio.js",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/app/views/details.html",
+		"/var/www/HTML5/Lungo/ejemplos/Calendario-F1/app/events/eventEscuderias.js",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/app/eventos/buscador.js",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/app/css/terremotos.css",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/app/js/eventos.js",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/components/lungo/gmap/examples/example.html",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/components/lungo/gmap/lungo.sugar.gmap.js",
+		"/var/www/HTML5/Lungo/ejemplos/terremotos/components/lungo/gmap/lungo.sugar.gmap.interface.js",
+		"/var/www/HTML5/Lungo/ejemplos/Lungo.demo/app/events.touch.js",
+		"/var/www/HTML5/Lungo/ejemplos/Lungo.demo/app/view.js",
+		"/var/www/HTML5/Lungo/ejemplos/Lungo.demo/app/app.js",
+		"/var/www/HTML5/Lungo/ejemplos/BuscaTuits1.2/app/data.js",
+		"/var/www/HTML5/Lungo/ejemplos/BuscaTuits1.2/app/services.js",
+		"/var/www/HTML5/Lungo/ejemplos/BuscaTuits1.2/app/events.js",
+		"/var/www/HTML5/Lungo/ejemplos/BuscaTuits1.2/app/app.js",
+		"/var/www/HTML5/Lungo/ejemplos/Calendario-F1/app/events/eventPilotos.js",
+		"/var/www/HTML5/Lungo/ejemplos/Calendario-F1/app/events/events.js",
+		"/var/www/HTML5/Lungo/ejemplos/Calendario-F1/app/events/eventImageTap.js",
+		"/var/www/HTML5/lungojs/ejemplos/Lungo.js/example/index.html",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/app/js/main.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/index.html",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/app/js/data2.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/app/js/data.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/app/js/servicio.js",
+		"/var/www/HTML5/lungojs/ejemplos/Calendario-F1/app/events/events.js",
+		"/var/www/HTML5/lungojs/ejemplos/servicioREST/app/service.js",
+		"/var/www/HTML5/lungojs/ejemplos/servicioREST/index.html",
+		"/var/www/HTML5/javascript/HTML5-GrupoSIE/EjercicioHTML5-13/js/main.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/components/lungo/gmap/lungo.sugar.gmap.interface.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/components/lungo/gmap/lungo.sugar.gmap.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/ejemplo_gmap.html",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/app/js/app.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/components/quojs/quo.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/components/quojs/quo.debug.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/puta.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/components/quojs/mierda.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/components/quojs/tapquo.js",
+		"/var/www/HTML5/lungojs/ejemplos/terremotos/components/lungo/gmap/examples/example.html",
 		"/var/www/HTML5/javascript/webWorkers/ej_web-worker.js",
 		"/var/www/HTML5/javascript/javascript-cookbook/cap16/ejercicio16.html",
 		"/var/www/HTML5/javascript/javascript-cookbook/cap16/ej16_5.js",
-		"/var/www/HTML5/javascript/HTML5-GrupoSIE/EjercicioHTML5-13/js/main.js",
 		"/var/www/HTML5/javascript/HTML5-GrupoSIE/EjercicioHTML5-13/index.html",
 		"/var/www/HTML5/javascript/HTML5-GrupoSIE/EjercicioHTML5-10/index.html",
 		"/var/www/HTML5/javascript/HTML5-GrupoSIE/EjercicioHTML5-10/js/IDBWrapper.js",
@@ -224,58 +259,7 @@
 		"/var/www/JavaScript/Ajax/EjercicioAJAX2/cliente/util.js",
 		"/var/www/JavaScript/formularios/validacion_formularios.html",
 		"/home/javi/.config/sublime-text-2/Packages/Web Inspector/swi.sublime-settings",
-		"/var/www/HTML5/javascript/herencia-js_mozilla.js",
-		"/var/www/JavaScript/formularios/javascript_form/examples/1-simple-example.html",
-		"/var/www/JavaScript/formularios/javascript_form/gen_validatorv4.js",
-		"/javi2/DropboxTerra/Dropbox/CursoCapaFormacion/HTML5/EjereciciosHouse/12/eje12.js",
-		"/javi2/DropboxTerra/Dropbox/CursoCapaFormacion/HTML5/EjereciciosHouse/12/Ejercicio_12.html",
-		"/javi2/DropboxTerra/Dropbox/CursoCapaFormacion/HTML5/EjereciciosHouse/12/Ejercicio 11 - DOM básico.html",
-		"/home/javi/easybook/doc/libro-de-prueba-1/config.yml",
-		"/var/www/HTML5/RWD/Ejemplo_bootstrap/index.html",
-		"/var/www/HTML5/RWD/Ejemplo_bootstrap/index3.html",
-		"/var/www/HTML5/RWD/Ejemplo_bootstrap/index2.html",
-		"/var/www/HTML5/RWD/Ejemplo_bootstrap/css/bootstrap.css",
-		"/var/www/HTML5/less/charla-preprocesadores-css/ejemplo.less",
-		"/var/www/HTML5/less/charla-preprocesadores-css/style.less",
-		"/javi2/DropboxTerra/Dropbox/CursoCapaFormacion/HTML5/AptanaWorkspace/EjercicioJS8/js/codigo.js",
-		"/var/www/HTML5/javascript/index.html",
-		"/javi2/DropboxTerra/Dropbox/CursoCapaFormacion/HTML5/herencia-javascript/persona.js",
-		"/javi2/DropboxTerra/Dropbox/CursoCapaFormacion/HTML5/herencia-javascript/herencia-js.js",
-		"/media/Datos/Programacion/DesarrolloMovil/notificacionesPUSH/users.php",
-		"/javi2/RWD/bootstrap/bootstrap/index.html",
-		"/var/www/HTML5/RWD/bootstrap/index.html",
-		"/javi2/redmine/.gitignore",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/fragmentos/workspaces/TabsWithViewPagerProject/AndroidManifest.xml",
-		"/home/javi/workspacesAndroid/TabsWithViewPager/AndroidManifest.xml",
-		"/javi2/websites/Android-twitter-api/0.##cbhondarribia.com/css/style.css",
-		"/home/javi/workspacesAndroid/Week 1 - Step 4 - Authentication/gen/com/oreilly/android/otweet/R.java",
-		"/media/Datos/Programacion/DesarrolloMovil/CursoCapaFormacon/ANDROID-capa/ANDROID/workspaces/oreilly_android/README",
-		"/media/Datos/Programacion/DesarrolloMovil/CursoCapaFormacon/ANDROID-capa/ANDROID/workspaces/oreilly_android/Course_2_Twitter_Client/03_async_tasks_and_tweeting/step_four/gen/com/oreilly/android/otweet/R.java",
-		"/media/Datos/Programacion/DesarrolloMovil/CursoCapaFormacon/ANDROID-capa/ANDROID/workspaces/oreilly_android/Course_2_Twitter_Client/01_oauth_flow/step_four/gen/com/oreilly/android/otweet/R.java",
-		"/home/javi/jd-gui/readme.txt",
-		"/javi2/kk/configuration.php",
-		"/home/javi/easybook/doc/easybook-doc-es/config.yml",
-		"/home/javi/easybook/doc/libro-de-prueba/config.yml",
-		"/home/javi/facebookApps/limitless-oasis-8270/example.php",
-		"/home/javi/easybook/doc/libro-de-prueba/Contents/chapter1.md",
-		"/javi2/websites/Android-twitter-api/0.##cbhondarribia.com/index.html",
-		"/home/javi/facebookApps/limitless-oasis-8270/index.php",
-		"/javi2/websites/Android-twitter/www.androidhive.info/2012/09/android-twitter-oauth-connect-tutorial/index.html",
-		"/javi2/websites/Android-twitter/cbhondarribia.com/index.html",
-		"/media/Datos/OpenIrekia/irekia-android-1.1/AndroidManifest.xml",
-		"/media/Datos/Programacion/DesarrolloMovil/CursoCapaFormacon/ANDROID-capa/ANDROID/07.Internet/todo/500px/src/com/starky/flickr/ImageAdapter.java",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/102275ReadMe.txt",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Source_code_download_for_Beginning_Android_4_AD/README.txt",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/Code Snippets/Chapter 9/PA4AD_Ch09_MyService/src/com/paad/services/MyService.java",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/Full Worked Sample Projects/Chapter_8_To-do_List/src/com/paad/todolist/ToDoListActivity.java",
-		"/media/Datos/Programacion/DesarrolloMovil/CursoCapaFormacon/ANDROID-capa/ANDROID/08.Datos/Pasos preferencias.txt",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/Code Snippets/Chapter 10/PA4AD_Ch10_ActionBar/src/com/paad/actionbar/ActionBarTabActivity.java",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/Code Snippets/Chapter 10/PA4AD_Ch10_ActionBar/src/com/paad/actionbar/MyFragment.java",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/Code Snippets/Chapter 10/PA4AD_Ch10_ActionBar/res/layout/fragment.xml",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/Code Snippets/Chapter 10/PA4AD_Ch10_ActionBar/res/values/strings.xml",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/Code Snippets/Chapter 10/PA4AD_Ch10_ActionBar/res/layout/main.xml",
-		"/media/Datos/Programacion/DesarrolloMovil/Android/DocAndroid/Professional_Android_4_Application_Development/Professional Android 4 All downloads/9781118102275 PA4AD/Code Snippets/Chapter 10/PA4AD_Ch10_ActionBar/src/com/paad/actionbar/ActionBarActivity.java",
-		"/media/Datos/Programacion/DesarrolloMovil/#####CursoDesarrolloAppsMoviles/AndroidPreferences/src/com/exercise/androidpreference/AndroidPreference.java"
+		"/var/www/HTML5/javascript/herencia-js_mozilla.js"
 	],
 	"find":
 	{
@@ -340,6 +324,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"article",
+			"latlng",
+			".js",
+			"vendor",
+			"sugar-gmap-indications\n\n",
+			"map",
 			"};",
 			"self",
 			"	\n",
@@ -461,13 +451,7 @@
 			"x_tripslashes",
 			"x_tripslashes()",
 			"Facturaci\n",
-			"Facturación y Dirección de entrega\n",
-			"trace",
-			"traz",
-			"pdf",
-			"base de datos",
-			"estilo-leiza.css",
-			"define('MODULO"
+			"Facturación y Dirección de entrega\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -491,66 +475,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "index.html",
-					"settings":
-					{
-						"buffer_size": 7657,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6378,
-								6378
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 961.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "formulario.html",
-					"settings":
-					{
-						"buffer_size": 1131,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								91,
-								91
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<section id=\"form\" data-transition=\"slide\" class=\"",
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -717,7 +643,7 @@
 		[
 			[
 				"",
-				"/var/www/OnEs/zumaiaezagutu/public_html/zumaia.sublime-project"
+				"/var/www/HTML5/Lungo/ejemplos/Calendario-F1/f1.sublime-project"
 			],
 			[
 				"dipr",
@@ -731,9 +657,9 @@
 		"width": 380.0
 	},
 	"show_minimap": true,
-	"show_open_files": false,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 244.0,
+	"side_bar_width": 277.0,
 	"status_bar_visible": true
 }
