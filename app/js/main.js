@@ -103,17 +103,9 @@ Lungo.ready(function() {
 			  timeout           : 27000,
 			 
 			};
-
-	      
-
 	};
 
 
-	
-
-	
-	
-	
 
 	/* =================
 		    MAPAS
@@ -211,6 +203,23 @@ Lungo.ready(function() {
     	Lungo.Notification.html(notificcion, "Close");
 	});
 
+
+
+
+/* ============================================================
+    Eventos de la pantalla de las opciones de configuracion 
+  ============================================================= */
+
+	Lungo.dom('article#op_config #actualizar').on("change", function(event) {
+	         console.log(" rango : actualziacion automatica ", $$(this).attr('value'));
+	     
+	});
+
+	Lungo.dom('article#op_config select').on("change", function(event) {
+	         // console.log("select : actualziacion automatica ", $$("article#op_config select option"));
+	           console.log("select : actualziacion automatica ", event.target.value);
+	     
+	});
 
 
 	
