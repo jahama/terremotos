@@ -1,6 +1,6 @@
 Lungo.ready(function() {
 
- var actualizacion_id;
+ 
 	cargarDatos();
 
 	
@@ -211,50 +211,40 @@ Lungo.ready(function() {
     Eventos de la pantalla de las opciones de configuracion 
   ============================================================= */
 
-	Lungo.dom('article#op_config #actualizar').on("change", function(event) {
-	         console.log(" rango : actualziacion automatica ", $$(this).attr('value'));
-
+	$$('article#op_config #actualizar').on("change", function(event) {
+	         
 	         var conf_actual = Lungo.Data.Storage.persistent('conf_actualizacion');
 	        
 	         var actualizar = ($$(this).attr('value') == "1") ? true : false;
+	         console.log(" valor seleccioando checkbox " ,actualizar);
 
 	         var conf_nueva =  {act_auto: actualizar, act_intervalo: conf_actual.act_intervalo};
+
    			 Lungo.Data.Storage.persistent('conf_actualizacion',conf_nueva);
 
-   			 console.log(conf_nueva.act_auto);
+   			 	if (conf_nueva.act_auto){ // Si tiene a "true" la actualizacion automatica se lanzara
+   			 		 var actualizacion_id = setInterval(reFresh,conf_nueva.act_intervalo);
+	   			   // guardo el identifador 
+	   			    var actualizacion ={id:actualizacion_id}
+	   			    Lungo.Data.Cache.set('actualizacion',actualizacion);
 
-   			 	if (conf_nueva.act_auto==true){ // Si tiene a "true" la actualizacion automatica se lanzara
-
-	      			console.log(" actualziacion automatica" , actualizacion_id);
-	      			
 	      			// lanzar el temporizador
 	      			function reFresh() {
 	   					console.log(" acceder al servicio cada ", conf_nueva.act_intervalo );
-	   					console.log(" id ", actualizacion_id );
+	   					console.log(" id ", Lungo.Data.Cache.get('actualizacion'));
+	   					cargarDatos();
+
 	   				}
 	   				//
-	   			    actualizacion_id = setInterval(reFresh,conf_nueva.act_intervalo);
-	   			 //    // guardo el identifador 
-	   			    Lungo.Data.Storage.session('actualizacion_id',actualizacion_id);
+	   			   
 
-					console.log(" actualziacion automatica , FIN " , actualizacion_id);
-	   			 //   if  ( Lungo.Data.Storage.session('actualizacion_id')) {
-	   			 //   	console.log(" EXISTE" ,Lungo.Data.Storage.session('actualizacion_id'));
-	   			 //   }else{
-	   			 //   		console.log(" NO EXISTE" , Lungo.Data.Storage.session('actualizacion_id'));
-	   			 //   }
+				
+	   			
                   	            
 	      		}else{ // parar
-
-	      			console.log(" parar la actualizacion, id guardado 	 ", actualizacion_id + ' -  '+ Lungo.Data.Storage.session('actualizacion_id')) ;
-
-	      			// if  (Lungo.Data.Storage.session('actualizacion_id')) {
-	   			   // 	console.log(" EXISTE" , Lungo.Data.Storage.session('actualizacion_id'));
-	   			   // }else{
-	   			   // 		console.log(" NO EXISTE" , Lungo.Data.Storage.session('actualizacion_id'));
-	   			   // }
-	   			   // 	console.log(this);
-	      			 clearInterval(actualizacion_id);
+	      			actualizacion = Lungo.Data.Cache.get('actualizacion');
+	      			console.log(" parar la actualizacion, id guardado 	 ",  actualizacion.id) ;
+	      			clearInterval(actualizacion.id);	
 	      		}
 
 	     
@@ -267,13 +257,14 @@ Lungo.ready(function() {
 	           // Valor del intervalo de actualizacion seleccionado por el usuario
 	           var intervalo;
 	           switch (event.target.value){
-		           	case "0":intervalo = 10000000;break;
-		           	case "1":intervalo = 60;break;
-		           	case "2":intervalo = 900;break;
-		           	case "3":intervalo = 1800;break;
-		           	case "4":intervalo = 3600;break;
+		           
+		           	case "1":intervalo = 3600;break;
+		           	case "2":intervalo = 3600*5;break;
+		           	case "3":intervalo = 3600*15;break;
+		           	case "4":intervalo = 3600*30;break;
+		           	case "5":intervalo = 3600*60;break;
 
-		           	default: intervalo = 10000000000;break;
+		           	default: intervalo = 3600*60;break;
 	           }
 	           	console.log( " actua ",config.act_auto + '  -  ' + intervalo );
 
@@ -288,8 +279,6 @@ Lungo.ready(function() {
 	   				}
 	   			   proceso_actualizacion = setInterval(reFresh,intervalo);
 	            
-	      		}else{
-
 	      		}
 
 	     
@@ -299,7 +288,7 @@ Lungo.ready(function() {
 	         // console.log("select : actualziacion automatica ", $$("article#op_config select option"));
 	    console.log("resetear valores ", event);
 
-   		var conf_actualizacion =  {act_auto: false, act_intervalo: 0};
+   		var conf_actualizacion =  {act_auto: false, act_intervalo: 3600};
    		Lungo.Data.Storage.persistent('conf_actualizacion',conf_actualizacion);
    		clearInterval(Lungo.Data.Cache.set('proceso_actualizacion'));
 	     

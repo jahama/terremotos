@@ -17,16 +17,21 @@ Lungo.ready(function() {
    		// Si tiene la configuracion guardada hay que comprobar sus valores y tratarlos
    		
    		var config = Lungo.Data.Storage.persistent('conf_actualizacion');
-   		var intervalo = config.act_intervalo * 100;
+   		var intervalo = config.act_intervalo ;
    		console.log(" existe ",config);
       		if (config.act_auto){ // Si tiene a "true" la actualizacion automatica se lanzara
-      			console.log(" actualziacion automatica");
-      			// lanzar el temporizador
-      			function reFresh() {
-   				console.log(" acceder al servicio cada ", intervalo );
-   			}
-   			   proceso_actualizacion = setInterval(reFresh,intervalo);
-               Lungo.Data.Cache.set('proceso_actualizacion',proceso_actualizacion);
+         			 var actualizacion_id = setInterval(reFresh,config.act_intervalo);
+                  // guardo el identifador 
+                   var actualizacion ={id:actualizacion_id}
+                   Lungo.Data.Cache.set('actualizacion',actualizacion);
+
+                  // lanzar el temporizador
+                  function reFresh() {
+                     // Actualizar el servicio
+                     console.log(" acceder al servicio cada ", config.act_intervalo );
+                     console.log(" id ", Lungo.Data.Cache.get('actualizacion'));
+                  }
+                       
       		}else{
       			clearInterval(proceso_actualizacion);
       		}	

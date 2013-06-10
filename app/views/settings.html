@@ -13,14 +13,20 @@
             <div class="form">
                 
                 <label>Auto refresh:</label>
-                <input type="range" id="actualizar" class="checkbox right" min="0" max="1" value="1">
+                <label class="checkbox right">Si:</label>
+                <input type="radio"  name="actualizar" id="actualizar" class="right" value="1" />
+                <label class="check right">No:</label>
+                <input type="radio" name="actualizar"  id="actualizar" class="right" value="0" /> 
+
                 
                 <label class="select">
                     <select class="custom">
-                        <option value="1">5 minutos</option>
-                        <option value="2">15 minutos</option>
-                        <option value="3">30 minutos</option>
-                        <option value="4">1 hora</option>
+                        
+                        <option value="1">1 minuto</option>
+                        <option value="2">5 minutos</option>
+                        <option value="3">15 minutos</option>
+                        <option value="4">30 minutos</option>
+                        <option value="5">1 hora</option>
                     </select>
                 </label>
                 <a href="#" class="button anchor cancel margin bottom">Reset Defaults</a>
