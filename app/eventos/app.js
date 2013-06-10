@@ -19,22 +19,25 @@ Lungo.ready(function() {
    		var config = Lungo.Data.Storage.persistent('conf_actualizacion');
    		var intervalo = config.act_intervalo * 100;
    		console.log(" existe ",config);
-   		if (config.act_auto){ // Si tiene a "true" la actualizacion automatica se lanzara
-   			console.log(" actualziacion automatica");
-   			// lanzar el temporizador
-   			function reFresh() {
-				console.log(" acceder al servicio cada ", intervalo );
-			}
-			   proceso_actualizacion = setInterval(reFresh,intervalo);
-   		}else{
-   			clearInterval(proceso_actualizacion);
-   		}	
+      		if (config.act_auto){ // Si tiene a "true" la actualizacion automatica se lanzara
+      			console.log(" actualziacion automatica");
+      			// lanzar el temporizador
+      			function reFresh() {
+   				console.log(" acceder al servicio cada ", intervalo );
+   			}
+   			   proceso_actualizacion = setInterval(reFresh,intervalo);
+               Lungo.Data.Cache.set('proceso_actualizacion',proceso_actualizacion);
+      		}else{
+      			clearInterval(proceso_actualizacion);
+      		}	
+
 
 
    	}else{
    		console.log(" NO existe --> Creearla ");
-   		var conf_actualizacion =  {act_auto: false, act_intervalo: 10};
+   		var conf_actualizacion =  {act_auto: false, act_intervalo: 0};
    		Lungo.Data.Storage.persistent('conf_actualizacion',conf_actualizacion);
+         // Para el contador si estuviera en marcha 
    	}
 
 });
