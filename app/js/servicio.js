@@ -3,6 +3,7 @@ var cargarDatos = function() {
 	Lungo.Core.log(1," acceso al servicio cargar datos ");
 
 	var url = "datos/earthquake.xml";
+	var url = "datos/update.xml";
 	var data = {};
 	var listadoTerremotos=[];
 
@@ -10,11 +11,9 @@ var cargarDatos = function() {
 			FUNCION DE CALLBACK DE LA PETICION AJAX PARA OBTENER TERRMOTOS 
 	     ====================================================================== */
 	var parseResponse = function(result){
+		console.log(" recibiendo datos del servicio ");
 
 		var terremotos = result.getElementsByTagName('item');
-		console.log(" datos que se reciben del servicio web ");
-	    Lungo.Core.log(1,terremotos);
-
 		
 		for (var i = 0; i < terremotos.length; i++)
 		 {
@@ -83,13 +82,7 @@ var cargarDatos = function() {
 			var infoTerremotos = function(data){
 
 		    	for(var i = 0, len = data.length; i < len; i++){
-				     // console.log(data[i].title + ' - '+ data[i].latitud + ' - '+ data[i].longitud + ' - ');
-				    /*  
-				     var elemento = $$('#listado ul').append('<li> </li> ');
-				         elemento.find('li').addClass('arrow');
-				     */   
-				         
-				    // console.log(elemento);
+				    
 				     $$('#listado ul').append('<li class="arrow"><a href="#detalle_terremoto" data-router="section"  data-id="'+ data[i].id +'" ><div class="left tag blue">'+ data[i].magnitude +'</div><strong>'+ data[i].title +'</strong></a> <small>'+ new Date(data[i].pubDate  * 1000)+'</small></li> ');
 				     $$('#buscador ul').append('<li class="arrow"><a href="#detalle_terremoto" data-router="section" data-id="'+ data[i].id +'" ><div class="left tag blue">'+ data[i].magnitude +'</div><strong>'+ data[i].title +'</strong></a> <small>'+ new Date(data[i].pubDate  * 1000)+'</small></li> ');
 				        
@@ -98,9 +91,6 @@ var cargarDatos = function() {
 				   
 
 			Lungo.Data.Sql.select('terremotos', null, infoTerremotos);
-				
-
-	   
 	};
 
 	// Cargar los datos desde el servicio

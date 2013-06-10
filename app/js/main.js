@@ -16,8 +16,6 @@ Lungo.ready(function() {
 	   var  id = this.getAttribute("data-id");
 	   var terremoto = Lungo.dom(this);
 
-
-	  console.log(" id guardado en session storage " + terremoto.attr('data-id'));
 	  // sessionStorage.setItem('id', id);
 	   //Lungo.Data.Storage.session("id", null);
 	   Lungo.Data.Storage.session("id", id);
@@ -30,9 +28,8 @@ Lungo.ready(function() {
 		  //
 		  setTimeout(function(){
 			  var id =  Lungo.Data.Storage.session("id");
-			  console.log(" identificador para la busqueda en BBDD " +  id)
 			  Lungo.Data.Sql.select('terremotos', {id: id}, infoTerremoto);
-		},20);
+		},10);
 
 		
 	});
@@ -74,7 +71,7 @@ Lungo.ready(function() {
 			  	latitude:data[0].latitud,
 			  	longitude:data[0].longitud
 			  };
-			  console.log(position);
+			
 			  
 			 Lungo.Sugar.GMap.init({
 		            el: '#mapaTerremoto',
@@ -88,9 +85,6 @@ Lungo.ready(function() {
 			marcador.title= data[0].title;
 
             Lungo.Sugar.GMap.center(_miPos);
-           
-
-
 
 			}
 			 
@@ -125,7 +119,7 @@ Lungo.ready(function() {
 
 				function geo_success(position) {
 
-				  console.log(data[0]);
+				
 				  var listaPosiciones=[];
 
 				   Lungo.Sugar.GMap.init({
@@ -141,8 +135,7 @@ Lungo.ready(function() {
 						 	longitude:data[i].longitud,
 						  	
 						  };
-						 console.log(" posicion : "); 
-						 console.log(_miPos);
+						 
 						 listaPosiciones.push(_miPos);
 
 						 var marcador = Lungo.Sugar.GMap;
@@ -153,22 +146,6 @@ Lungo.ready(function() {
 
 					}
 						
-
-							console.log(listaPosiciones[0]);
-							/*
-								Lungo.Sugar.GMap.addMarker(listaPosiciones[1], null, false);
-								 Lungo.Sugar.GMap.addMarker(listaPosiciones[2], null, false);
-								Lungo.Sugar.GMap.addMarker(listaPosiciones[2], null, false);
-								// añado un mensaje para mostrar con el marcador 
-								//marcador.title= data[i].title + ' / ' + data[i].longitud + ' : ' + data[i].latitud ;
-
-								
-								
-								//console.log(marcador);
-					            Lungo.Sugar.GMap.center(_miPos);
-					            Lungo.Sugar.GMap.zoom(3);
-					  
-*/
 
 					}
 					 
@@ -192,9 +169,6 @@ Lungo.ready(function() {
   ====================================================================== */
 
 	Lungo.dom('#detalle_terremoto .button').on("singleTap", function(event) {
-    	console.log(" compartir ");
-    	console.log(this);
-
     	var notificcion = "";
     	// 
     	notificcion += '<a href="#" class="button anchor" data-icon="twitter" data-label="Normal" data-action="normal"><span class="icon brand twitter"></span><abbr>Twitter</abbr></a>';
@@ -216,7 +190,7 @@ Lungo.ready(function() {
 	         var conf_actual = Lungo.Data.Storage.persistent('conf_actualizacion');
 	        
 	         var actualizar = ($$(this).attr('value') == "1") ? true : false;
-	         console.log(" valor seleccioando checkbox " ,actualizar);
+	       
 
 	         var conf_nueva =  {act_auto: actualizar, act_intervalo: conf_actual.act_intervalo};
 
@@ -230,20 +204,14 @@ Lungo.ready(function() {
 
 	      			// lanzar el temporizador
 	      			function reFresh() {
-	   					console.log(" acceder al servicio cada ", conf_nueva.act_intervalo );
-	   					console.log(" id ", Lungo.Data.Cache.get('actualizacion'));
+	   					console.log(" Actualizacion automatica : acceder al servicio cada ", conf_nueva.act_intervalo );
+	   					
 	   					cargarDatos();
 
 	   				}
-	   				//
-	   			   
-
-				
-	   			
                   	            
 	      		}else{ // parar
 	      			actualizacion = Lungo.Data.Cache.get('actualizacion');
-	      			console.log(" parar la actualizacion, id guardado 	 ",  actualizacion.id) ;
 	      			clearInterval(actualizacion.id);	
 	      		}
 
@@ -251,43 +219,47 @@ Lungo.ready(function() {
 	});
 
 	Lungo.dom('article#op_config select').on("change", function(event) {
-	         // console.log("select : actualziacion automatica ", $$("article#op_config select option"));
-	           console.log("select : actualziacion automatica ", event.target.value);
 	           var config_actual = Lungo.Data.Storage.persistent('conf_actualizacion');
 	           // Valor del intervalo de actualizacion seleccionado por el usuario
-	           var intervalo;
+	           var intervalo = 0;
 	           switch (event.target.value){
 		           
-		           	case "1":intervalo = 3600;break;
-		           	case "2":intervalo = 3600*5;break;
-		           	case "3":intervalo = 3600*15;break;
-		           	case "4":intervalo = 3600*30;break;
-		           	case "5":intervalo = 3600*60;break;
 
-		           	default: intervalo = 3600*60;break;
+		           	case "1":intervalo = 60000;break;   // 
+		           	case "2":intervalo = 300000;break; // 5 minutos
+		           	case "3":intervalo = 900000;break;  // 15 minutos
+		           	case "4":intervalo = 1800000 ;break; // 30 minutos
+		           	case "5":intervalo = 3600000;break; // 1 hora
+		           	case "100":intervalo = 5000;break; // 5 segundos (pruebas)
+		           
 	           }
-	           	console.log( " actua ",config.act_auto + '  -  ' + intervalo );
+	          
 
-   				 var conf_nueva =  {act_auto: config_actual.act_auto, act_intervalo: intervalo};
-   				 Lungo.Data.Storage.persistent('conf_actualizacion',conf_nueva);
-	     
-	      		if (conf_nueva.act_auto){ // Si tiene a "true" la actualizacion automatica se lanzara
-	      			console.log(" actualziacion automatica");
+	           if (intervalo !== 0){
+	   				 var conf_nueva =  {act_auto: config_actual.act_auto, act_intervalo: intervalo};
+	   				 Lungo.Data.Storage.persistent('conf_actualizacion',conf_nueva);
+		     
+		      		if (conf_nueva.act_auto){ // Si tiene a "true" la actualizacion automatica se lanzara
+		      			 var actualizacion_id = setInterval(reFresh,conf_nueva.act_intervalo);
+	   			   // guardo el identifador 
+	   			    var actualizacion ={id:actualizacion_id}
+	   			    Lungo.Data.Cache.set('actualizacion',actualizacion);
+
 	      			// lanzar el temporizador
-	      			function reFresh() {
-	   					console.log(" acceder al servicio cada ", intervalo );
-	   				}
-	   			   proceso_actualizacion = setInterval(reFresh,intervalo);
-	            
-	      		}
+		      			function reFresh() {
+		   					console.log(" Actualizacion automatica : acceder al servicio cada ", conf_nueva.act_intervalo );
+		   					
+		   					cargarDatos();
+
+		   				}
+		      		}
+		      	}
 
 	     
 	});
 
 	Lungo.dom('article .form .button').on("tap", function(event) {
 	         // console.log("select : actualziacion automatica ", $$("article#op_config select option"));
-	    console.log("resetear valores ", event);
-
    		var conf_actualizacion =  {act_auto: false, act_intervalo: 3600};
    		Lungo.Data.Storage.persistent('conf_actualizacion',conf_actualizacion);
    		clearInterval(Lungo.Data.Cache.set('proceso_actualizacion'));

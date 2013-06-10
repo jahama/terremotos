@@ -8,8 +8,7 @@ Lungo.ready(function() {
 		act_auto      : actualizacion automatica 
 		act_intervalo :  
    */
-   	console.log($$('#op_config #actualizar').val());
-
+   
  
 	var  proceso_actualizacion;
   	// 
@@ -18,7 +17,7 @@ Lungo.ready(function() {
    		
    		var config = Lungo.Data.Storage.persistent('conf_actualizacion');
    		var intervalo = config.act_intervalo ;
-   		console.log(" existe ",config);
+   		
       		if (config.act_auto){ // Si tiene a "true" la actualizacion automatica se lanzara
          			 var actualizacion_id = setInterval(reFresh,config.act_intervalo);
                   // guardo el identifador 
@@ -28,8 +27,7 @@ Lungo.ready(function() {
                   // lanzar el temporizador
                   function reFresh() {
                      // Actualizar el servicio
-                     console.log(" acceder al servicio cada ", config.act_intervalo );
-                     console.log(" id ", Lungo.Data.Cache.get('actualizacion'));
+                     
                   }
                        
       		}else{
